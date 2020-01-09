@@ -1,8 +1,24 @@
+//enter items they need to purchase by entering text and hitting "Return" or clicking the "Add Item" button
+$('form').submit(event => {
+    event.preventDefault();
+    $('ul').append(`<li>
+    <span class="shopping-item">${event.Target}</span>
+    <div class="shopping-item-controls">
+      <button class="shopping-item-toggle">
+        <span class="button-label">check</span>
+      </button>
+      <button class="shopping-item-delete">
+        <span class="button-label">delete</span>
+      </button>
+    </div>
+  </li>`)
+})
 
-$( 'main').on( 'click', '.thumbnail', (event) => {
-   event.preventDefault();
-    let thumbSrc = $(event.currentTarget).find('img').attr('src');
-    let thumbAlt =  $(event.currentTarget).find('img').attr('alt');
-    $('.hero img').attr('src', thumbSrc);
-    $('.hero img').attr('alt', thumbAlt);
-});
+
+$(".shopping-item-toggle").click(event => {
+    $("li .shopping-item").toggleClass("shopping-item shopping-item__checked")
+})
+
+
+//permanently remove items from the list
+//remove an li from ul "shopping list"
